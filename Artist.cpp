@@ -4,15 +4,13 @@
 Artist::Artist(string n){
 	name = n;
 	numberOfAlbums = 0;
-	size = 5; // Default size is 5 Albums
-	albums = new Album*[size]; // Create an albums array of default size
+	albums = new Album*[5]; // Create an albums array of default size
 }
 
 Artist::Artist(string n, int nOA){
 	name = n;
 	numberOfAlbums = nOA;
-	size = numberOfAlbums; // Create an array just long enough for all Albums
-	albums = new Album*[size];
+	albums = new Album*[numberOfAlbums];
 }
 
 Artist::Artist(ifstream *inFile){
@@ -29,8 +27,7 @@ Artist::Artist(ifstream *inFile){
 	(*inFile).get();
 
 	// Create a vector of NULL pointers
-	size = numberOfAlbums;
-	albums = new Album*[size];
+	albums = new Album*[numberOfAlbums];
 
 	// Read in all albums by this artist
 	for (int i = 0; i < numberOfAlbums; i++){
@@ -111,5 +108,4 @@ void Artist::deleteArtist(){
 	for (int i = numberOfAlbums - 1; i >= 0; i--){
 		delete albums[i];
 	}
-	size = 0;
 }
