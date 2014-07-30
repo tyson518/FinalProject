@@ -5,6 +5,7 @@
 Album::Album(string titleP, int numSongsP, Song **songsP){
 	title = titleP;
 	numSongs = numSongsP;
+	size = numSongs; // Songs array passed is as big as the number of songs in the album
 	songs = songsP;
 }
 
@@ -22,7 +23,9 @@ Album::Album(ifstream *inFile){
 	(*inFile).get();
 
 	// Create a vector of NULL pointers
-	songs = new Song*[numSongs];
+	size = numSongs;
+	songs = new Song*[size];
+
 	
 	// Read in all songs from this album
 	for (int i = 0; i < numSongs; i++){
