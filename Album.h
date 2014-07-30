@@ -6,7 +6,12 @@ class Album {
 	string title;
 	Song **songs; //array of songs
 	int numSongs; //number of songs
+	int size;
 
+	// Array Management Functions
+	bool resize(int newSize); //change size to new size only works if newSize > number of songs
+	bool resize(); //size = numSongs * 2
+	
 	unsigned long calculateLength();
 
 public:
@@ -25,6 +30,7 @@ public:
 	void saveAlbum(ofstream*);
 	void print();
 	void deleteAlbum();
+	bool add(Song*);
 
 	//void printAll();
 	//void kill();

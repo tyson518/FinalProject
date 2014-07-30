@@ -54,11 +54,33 @@ void Album::setSong(Song *newSong, int index){
 
 bool Album::removeSong(int index){
     //Is there a song.kill() of some sort?
-	if(index > 0 && index < numSongs) {
+	if(index >= 0 && index < numSongs) {
+		for (int i = index; i<(numSongs-1); i++){
+			songs[i]=songs[i+1];
+		}
+		numSongs--;
 		return true;
 	} else {
 		return false;
 	}
+}
+
+bool Album::resize(int newSize){
+	if(newSize > numSongs){
+		Song **newSongs = new Song*[newSize];
+		for(int i=0; i<numSongs; i++){
+			newSongs[i]=songs[i];
+		}
+		delete songs;
+		songs = newSongs;
+		size = newSize;
+		return true;
+	}
+	return false;
+}
+
+bool Album::resize(){
+	return resize(numSongs*2);
 }
 
 int Album::getNumberOfSongs(){
@@ -83,6 +105,10 @@ void Album::print(){
 		(*songs[i]).print();
 	}
 	cout << endl;
+}
+
+bool Album::add(Song*){
+	return false;
 }
 
 void Album::saveAlbum(ofstream *outFile){
