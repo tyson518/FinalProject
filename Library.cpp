@@ -2,7 +2,8 @@
 #include "Library.h"
 
 Library::Library(){
-	artists = new Artist*[20];
+	size = 20; // Default size of 20 Artists
+	artists = new Artist*[size]; // Create empty array of default size
 }
 
 bool Library::search(string name){
@@ -80,7 +81,8 @@ void Library::loadLibrary(){
 	inFile >> numberOfArtists;
 
 	// Create the Artists array of the correct size
-	artists = new Artist*[numberOfArtists];
+	size = numberOfArtists;
+	artists = new Artist*[size];
 
 	// Eat up the newline character
 	inFile.get();
@@ -119,4 +121,5 @@ void Library::deleteLibrary(){
 	for (int i = numberOfArtists - 1; i >= 0; i--){
 		delete artists[i];
 	}
+	size = 0;
 }
