@@ -5,6 +5,59 @@ Library::Library(){
 	artists = new Artist*[20];
 }
 
+bool Library::search(string name){
+	bool retval = false;
+	for (int i = 0; i < numberOfArtists; i++){
+		if( name.compare((*artists[i]).getName()) == 0){
+			(*artists[i]).print();
+			retval = true;
+		}
+		retval = (*artists[i]).search(name) || retval;
+	}
+	return retval;
+}
+
+bool Library::add(Artist *newArtist){
+	bool added = false, found = false;
+	int i=0; 
+	while (i < numberOfArtists && (!added || !found)) {
+		if ((*newArtist).getName().compare((*artists[i]).getName()) == 0){
+			//need to copy over all albums in newArtist
+			found = true;
+			//for (int j = 0; j < (*newArtist).getn
+			//added = (*artists[i]).add((*newArtist).getAlbums());
+		}
+		i++;
+	}
+	if (!found){
+		// add newArtist to artists array
+		if (numberOfArtists < size || resize()){
+			artists[numberOfArtists]= newArtist;
+			numberOfArtists++;
+			added = true;
+		}
+	}
+	return added;
+}
+
+bool Library::resize(int newSize){
+	if(newSize > numberOfArtists){
+		Artist **newArtist = new Artist*[newSize];
+		for(int i=0; i<numberOfArtists; i++){
+			newArtist[i]=artists[i];
+		}
+		delete artists;
+		artists = newArtist;
+		size = newSize;
+		return true;
+	}
+	return false;
+}
+
+bool Library::resize(){
+	return resize(numberOfArtists+2);
+}
+
 void Library::print(){
 	cout << "Library:" << endl << endl;
 	for (int i = 0; i < numberOfArtists; i++){
