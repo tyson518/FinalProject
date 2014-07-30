@@ -22,6 +22,7 @@ public:
 	void setTitle(string);
 	Song getSong(int index);
 	void setSong(Song, int); //set song at index
+	bool searchPart(string part, int *foundNumber); // Prints songs which titles contains part
 	bool removeSong(int); //remove song at index
 	int getNumberOfSongs();
 	unsigned long getLength();

@@ -17,6 +17,7 @@ public:
 	void playArtist(string artistName);
 	void playAlbum(string albumName);
 	bool search(string name);// finds any songs, artists, or albums named name
+	bool searchPart(string part); // finds any songs, artists, or album with part in their title or name
 	void print();
 	void loadLibrary();// reads from a file
 	void saveLibrary();// writes the contents of library to a file

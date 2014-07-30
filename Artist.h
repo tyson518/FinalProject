@@ -22,4 +22,5 @@ public:
 	Album getAlbum(int index);
 	string getName();//to get the name 
 	bool search(string name);// to print out any albums and songs that match name. 
+	bool searchPart(string part, int *foundNumber); // prints out any albums or songs that contain part
 };

@@ -41,6 +41,10 @@ void Song::saveSong(ofstream *outFile){
 	*outFile << title << '\t' << length << '\t' << playCount << endl;
 }
 
+string Song::getTitle(){
+	return title;
+}
+
 void Song::print(){
 	cout << length << '\t' << playCount << '\t' << title << endl;
 }

@@ -18,6 +18,20 @@ bool Library::search(string name){
 	return retval;
 }
 
+bool Library::searchPart(string part){
+	string name;
+	int foundNumber = 1;
+	bool match = false;
+	for (int i = 0; i < numberOfArtists; i++){
+		if((*artists[i]).getName().find(part) != string::npos) {
+			cout << foundNumber++ << '\t' << (*artists[i]).getName() << endl;
+			match = true;
+		}
+		match = (*artists[i]).searchPart(part, &foundNumber) || match;
+	}
+	return match;
+}
+
 bool Library::add(Artist *newArtist){
 	bool added = false, found = false;
 	int i=0; 

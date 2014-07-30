@@ -76,6 +76,19 @@ bool Artist::search(string name){
 	return false;
 }
 
+bool Artist::searchPart(string part, int *foundNumber){
+	string name;
+	bool match = false;
+	for (int i = 0; i < numberOfAlbums; i++){
+		if((*albums[i]).getTitle().find(part) != string::npos) {
+			cout << (*foundNumber)++ << '\t' << (*albums[i]).getTitle() << endl;
+			match = true;
+		}
+		match = (*albums[i]).searchPart(part, foundNumber) || match;
+	}
+	return match;
+}
+
 bool Artist::add(Album *newAlbum){
 	bool retval = false, added = false;
 	for (int i=0; i < numberOfAlbums; i++){

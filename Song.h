@@ -14,7 +14,7 @@ public:
 	Song(string name, int length); // Create song with given name and length and a default play count of 0
 	Song(string name, int length, int playCount); // Create song with given name, length and play count
 	Song(ifstream*);
-	string getTitle(Song songA);
+	string getTitle();
 	int getLength(Song songA);
 	int getPlayCount(Song songA);
 	void incrementPlayCount(Song songA);

@@ -8,6 +8,7 @@
 using namespace std;
 
 Artist* addMenu();
+string searchMenu();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -15,13 +16,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	Menu Commands:
 	Add - Adds album to the Library
 	Search - Finds all Artists, Albums, and Songs that match the specified value
-	Delete - Removed specified Artist, Album, or Song
-	Print - Print specifed Artist, Album, or Song
+	SearchPart - Finds all Artists, Albums and Songs that have the specified value in them
 	PrintLib - Print the entire library to the screen
 	Help - Print help menu
 	LoadLib - Load Library from a file
 	SaveLib - Save Library to a file
 	Quit - Exit
+
+	// Not implemented
+	Delete - Removed specified Artist, Album, or Song
+	Print - Print specifed Artist, Album, or Song
 	*/
 
 	Library *lib = new Library();
@@ -37,16 +41,13 @@ int _tmain(int argc, _TCHAR* argv[])
 			} else {
 				cout << "Not Added";
 			}
-		} else if (command.compare("Search") == 0){
-			string searchVal;
-			cout << "Search Value: (use _ as space) ";
-			cin >> searchVal;
-
-			for(int i = 0; i < searchVal.length(); i++){
-				if (searchVal[i] == '_')
-					searchVal[i] = ' ';
+		} else if (command.compare("SearchPart") == 0){
+			string searchVal = searchMenu();
+			if(!(*lib).searchPart(searchVal)){
+				cout << "Nothing Found";
 			}
-
+		} else if (command.compare("Search") == 0){
+			string searchVal = searchMenu();
 			if(!(*lib).search(searchVal)){
 				cout << "Nothing Found";
 			}
@@ -73,6 +74,19 @@ int _tmain(int argc, _TCHAR* argv[])
 	(*lib).deleteLibrary();
 
 	return 0;
+}
+
+string searchMenu(){
+	string searchVal;
+	cout << "Search Value: (use _ as space) ";
+	cin >> searchVal;
+
+	for(int i = 0; i < searchVal.length(); i++){
+		if (searchVal[i] == '_')
+			searchVal[i] = ' ';
+	}
+
+	return searchVal;
 }
 
 Artist* addMenu(){

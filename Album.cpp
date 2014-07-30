@@ -55,6 +55,18 @@ void Album::setSong(Song *newSong, int index){
          cout << "The album does not have that many tracks" << endl;
 }
 
+bool Album::searchPart(string part, int *foundNumber){
+	string name;
+	bool match = false;
+	for (int i = 0; i < numSongs; i++){
+		if((*songs[i]).getTitle().find(part) != string::npos) {
+			cout << (*foundNumber)++ << '\t' << (*songs[i]).getTitle() << endl;
+			match = true;
+		}
+	}
+	return match;
+}
+
 bool Album::removeSong(int index){
     //Is there a song.kill() of some sort?
 	if(index >= 0 && index < numSongs) {
