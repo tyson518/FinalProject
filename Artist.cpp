@@ -4,7 +4,7 @@
 Artist::Artist(string n){
 	name = n;
 	numberOfAlbums = 0;
-	albums = new Album*[numberOfAlbums];
+	albums = new Album*[5]; // Create an albums array of default size
 }
 
 Artist::Artist(string n, int nOA){
@@ -35,14 +35,54 @@ Artist::Artist(ifstream *inFile){
 	}
 }
 
-bool Artist::addAlbum(Album *newAlbum){
-	int count = 0;
-	while(albums[count] != NULL && count < numberOfAlbums){
-		count ++;
-	}
-	if (count < numberOfAlbums){
-		albums[count] = newAlbum;
+bool Artist::remove(int index){
+	if(index >= 0 && index < numberOfAlbums) {
+		for (int i = index; i<(numberOfAlbums-1); i++){
+			albums[i]=albums[i+1];
+		}
+		numberOfAlbums--;
 		return true;
+	} else {
+		return false;
+	}
+}
+
+bool Artist::resize(int newSize){
+	if(newSize > numberOfAlbums){
+		Album **newAlbums = new Album*[newSize];
+		for(int i=0; i<numberOfAlbums; i++){
+			newAlbums[i]=albums[i];
+		}
+		delete albums;
+		albums = newAlbums;
+		size = newSize;
+		return true;
+	}
+	return false;
+}
+
+bool Artist::resize(){
+	return resize(numberOfAlbums+2);
+}
+
+string Artist::getName(){
+	return name;
+}
+
+bool Artist::search(string name){
+	return false;
+}
+
+bool Artist::add(Album *newAlbum){
+	bool retval = false, added = false;
+	for (int i=0; i < numberOfAlbums; i++){
+		if ((*newAlbum).getTitle().compare((*albums[i]).getTitle()) == 0){
+			//need to copy over all Songs in newAlbum. 
+			
+		}
+	}
+	if (!added){
+		// add newAlbum to albums array
 	}
 	return false;
 }
