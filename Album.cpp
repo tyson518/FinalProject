@@ -55,6 +55,17 @@ void Album::setSong(Song *newSong, int index){
          cout << "The album does not have that many tracks" << endl;
 }
 
+bool Album::search(string searchSong) {
+	bool retval = false;
+	for(int i=0; i<numSongs; i++) {
+		if(searchSong == (*songs[i]).getTitle()) {
+			(*songs[i]).print();
+			retval = true;
+		}
+	}
+	return retval;
+}
+
 bool Album::searchPart(string part, int *foundNumber){
 	string name;
 	bool match = false;

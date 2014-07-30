@@ -73,7 +73,15 @@ string Artist::getName(){
 }
 
 bool Artist::search(string name){
-	return false;
+	bool retval = false;
+	for(int i=0; i<numberOfAlbums; i++) {
+		if(name == (*albums[i]).getTitle()) {
+			(*albums[i]).print();
+			retval = true;
+		}
+		retval = (*albums[i]).search(name) || retval;
+	}
+	return retval;
 }
 
 bool Artist::searchPart(string part, int *foundNumber){
@@ -92,7 +100,7 @@ bool Artist::searchPart(string part, int *foundNumber){
 bool Artist::add(Album *newAlbum){
 	bool retval = false, added = false;
 	for (int i=0; i < numberOfAlbums; i++){
-		if ((*newAlbum).getTitle().compare((*albums[i]).getTitle()) == 0){
+		if ((*newAlbum).getTitle() == (*albums[i]).getTitle()){
 			//need to copy over all Songs in newAlbum. 
 			
 		}

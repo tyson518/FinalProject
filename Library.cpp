@@ -9,7 +9,7 @@ Library::Library(){
 bool Library::search(string name){
 	bool retval = false;
 	for (int i = 0; i < numberOfArtists; i++){
-		if( name.compare((*artists[i]).getName()) == 0){
+		if(name == (*artists[i]).getName()){
 			(*artists[i]).print();
 			retval = true;
 		}
@@ -36,7 +36,7 @@ bool Library::add(Artist *newArtist){
 	bool added = false, found = false;
 	int i=0; 
 	while (i < numberOfArtists && (!added || !found)) {
-		if ((*newArtist).getName().compare((*artists[i]).getName()) == 0){
+		if ((*newArtist).getName() == (*artists[i]).getName()){
 			//need to copy over all albums in newArtist
 			found = true;
 			//for (int j = 0; j < (*newArtist).getn

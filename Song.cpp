@@ -8,13 +8,13 @@ Song::Song(string t){
 	playCount = 0;
 }
 
-Song::Song(string t, int lengthP){
+Song::Song(string t, unsigned long lengthP){
 	title = t;
 	length = lengthP;
 	playCount = 0;
 }
 
-Song::Song(string t, int lengthP, int playCountP){
+Song::Song(string t, unsigned long lengthP, int playCountP){
 	title = t;
 	length = lengthP;
 	playCount = playCountP;
