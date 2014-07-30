@@ -127,6 +127,7 @@ void Album::deleteAlbum(){
 	for (int i = numSongs - 1; i >= 0; i--){
 		delete songs[i];
 	}
+	size = 0;
 }
 
 unsigned long Album::calculateLength(){
