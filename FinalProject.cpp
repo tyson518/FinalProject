@@ -32,9 +32,24 @@ int _tmain(int argc, _TCHAR* argv[])
 		cin >> command;
 		if (command.compare("Add") == 0){
 			Artist *newArtist = addMenu();
-			//(*lib).add(newArtist); // TODO implement
+			if ((*lib).add(newArtist)){
+				cout << "Added";
+			} else {
+				cout << "Not Added";
+			}
 		} else if (command.compare("Search") == 0){
-			cout << "Search Menu";
+			string searchVal;
+			cout << "Search Value: (use _ as space) ";
+			cin >> searchVal;
+
+			for(int i = 0; i < searchVal.length(); i++){
+				if (searchVal[i] == '_')
+					searchVal[i] = ' ';
+			}
+
+			if(!(*lib).search(searchVal)){
+				cout << "Nothing Found";
+			}
 		} else if (command.compare("Delete") == 0){
 			cout << "Delete Menu";
 		} else if (command.compare("Print") == 0){
@@ -49,13 +64,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		} else if (command.compare("SaveLib") == 0){
 			(*lib).saveLibrary();
 			cout << "Library saved to the file.";
+		} else {
+			cout << "Unrecognized Command.";
 		}
 		cout << endl;
 	}
 
 	(*lib).deleteLibrary();
 
-	system("pause");
 	return 0;
 }
 
