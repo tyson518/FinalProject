@@ -99,7 +99,7 @@ Artist* addMenu(){
             cin >> name;
             songs[i] = new Song(name, length);
         }
-        (*newArtist).addAlbum(new Album(album, numSongs, songs));
+        (*newArtist).add(new Album(album, numSongs, songs));
 
         cout << "Please enter next album name or N if done" << endl;
         cin >> album;
