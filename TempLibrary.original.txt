@@ -1,0 +1,104 @@
+4
+Beetles	3
+Sgt. Pepper's Lonely Hearts Club Band	13
+Sgt. Pepper's Lonely Hearts Club Band	14	0
+With a Little Help From My Friends	56	0
+Lucy in the Sky With Diamonds	42	0
+Getting Better	62	0
+Fixing a Hole	51	0
+She's Leaving Home	55	0
+Being For The Benefit Of Mr. Kite	47	0
+Within You Without You	37	0
+When I'm Sixty-Four	52	0
+Lovely Rita	51	0
+Good Morning Good Morning	55	0
+Sgt. Pepper's Lonely Hearts Club Band (reprise)	25	0
+A Day in the Life	64	0
+A Hard Day's Night	14
+A Hard Day's Night	153	0
+A Hard Day's Night	153	0
+Tell Me Why	130	0
+I'll Cry Instead	127	0
+I Should Have Known Better (instrumental)	134	0
+I'm Happy Just to Dance With You	115	0
+I'm Happy Just to Dance With You	119	0
+And I Love Her (instrumental)	226	0
+I Should Have Known Better	165	0
+If I Fell	129	0
+And I Love Her	151	0
+Ringo's Theme (This Boy) (instrumental)	191	0
+Can't Buy Me Love	131	0
+A Hard Day's Night (instrumental)	127	0
+Abbey Road	17
+Come Together	45	0
+Something	21	0
+Maxwell's Silver Hammer	45	0
+Oh! Darling	45	0
+Octopus's Garden	63	0
+I Want You (She's So Heavy)	89	0
+Here Comes the Sun	24	0
+Because	58	0
+You Never Give Me Your Money	26	0
+Sun King	38	0
+Mean Mr. Mustard	12	0
+Polythene Pam	19	0
+She Came in Through the Bathroom Window	64	0
+Golden Slumbers	38	0
+Carry That Weight	43	0
+The End	32	0
+Her Majesty	23	0
+Bob Dylan	2
+Blonde on Blonde	15
+Rainy Day Women #12 & 35	58	0
+Pledging My Time	68	0
+Visions of Johanna	75	0
+One of Us Must Know (Sooner or Later)	78	0
+I Want You	26	0
+Stuck Inside of Mobile With the Memphis Blues Again	47	0
+Leopard-Skin Pill-Box Hat	76	0
+Just Like a Woman	75	0
+Most Likely You Go Your Way and I'll Go Mine	44	0
+Most Likely You Go Your Way	45	0
+Temporary Like Achilles	32	0
+Absolutely Sweet Marie	81	0
+4th Time Around	59	0
+Obviously 5 Believers	53	0
+Sad Eyed Lady of the Lowlands	26	0
+The Times They Are A-Changin'	10
+The Times They Are A-Changin'	30	0
+Ballad of Hollis Brown	35	0
+With God on Our Side	49	0
+One Too Many Mornings	50	0
+North Country Blues	58	0
+Only a Pawn in Their Game	51	0
+Boots of Spanish Leather	63	0
+When the Ship Comes In	36	0
+The Lonesome Death of Hattie Carroll	77	0
+Restless Farewell	62	0
+The Beach Boys	1
+Pet Sounds	13
+Wouldn't It Be Nice	35	0
+You Still Believe in Me	42	0
+That’s Not Me	42	0
+Don’t Talk (Put Your Head on My Shoulder)	66	0
+I’m Waiting for the Day	24	0
+Let's Go Away for Awhile	30	0
+Sloop John B	66	0
+God Only Knows	58	0
+I Know There's an Answer	28	0
+Here Today	67	0
+I Just Wasn't Made for These Times	28	0
+Pet Sounds	35	0
+Caroline, No	66	0
+Marvin Gaye	1
+What's Going On	9
+What's Happening Brother	56	0
+What's Goin' On	22	0
+Flyin' High (In the Friendly Sky)	67	0
+Save the Children	27	0
+God Is Love	48	0
+Wholy Holy	26	0
+Mercy Mercy Me (The Ecology)	46	0
+Right On	74	0
+Inner City Blues (Make Me Wanna Holler)	58	0
+
