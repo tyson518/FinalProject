@@ -1,0 +1,5 @@
+LoadLib
+Search The_Beatles
+Search Blonde_on_Blonde
+Search What's_Goin'_On
+Search Something_Not_in_Library

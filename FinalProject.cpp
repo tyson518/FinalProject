@@ -1,5 +1,10 @@
-// FinalProj'ect.cpp : Defines the entry point for the console application.
-//
+/*
+* File: FinalProject.cpp
+* Author: Tyson Manning, Nick Smith, Jess Zielinski, Chris Porto, Audra Agajanian
+* Member: FinalProject.sln
+* 
+* Due: 24 July 2014
+*/
 
 #include "stdafx.h"
 #include <iostream>
@@ -10,9 +15,12 @@ using namespace std;
 Artist* addMenu();
 string searchMenu();
 void helpMenu();
+void normalize(string*);	//change all underscores to spaces
+string getResponse();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	cout << "Use underscore for space in all entries" << endl;
 	/*
 	Menu Commands:
 	Add - Adds album to the Library
@@ -23,6 +31,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	LoadLib - Load Library from a file
 	SaveLib - Save Library to a file
 	Quit - Exit
+
+	Use underscore instead of space for all entries
 
 	// Not implemented
 	Delete - Removed specified Artist, Album, or Song
@@ -38,9 +48,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (command == "Add") {
 			Artist *newArtist = addMenu();
 			if ((*lib).add(newArtist)){
-				cout << "Added";
+				cout << "Added Successfully";
 			} else {
-				cout << "Not Added";
+				cout << "Not Added Successfully";
 			}
 		} else if (command =="SearchPart") {
 			string searchVal = searchMenu();
@@ -49,6 +59,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 		} else if (command == "Search"){
 			string searchVal = searchMenu();
+			cout << endl;
 			if(!(*lib).search(searchVal)){
 				cout << "Nothing Found";
 			}
@@ -61,8 +72,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		} else if (command == "Help") {
 			helpMenu();
 		} else if (command == "LoadLib") {
-			(*lib).loadLibrary();
-			cout << "Library loaded from the file.";
+			if((*lib).loadLibrary()){
+				cout << "Library loaded from the file.";
+			} else {
+				cout << "Error loading library";
+			}
 		} else if (command == "SaveLib") {
 			(*lib).saveLibrary();
 			cout << "Library saved to the file.";
@@ -84,53 +98,63 @@ void helpMenu(){
 	cout << "SearchPart - Finds all Artists, Albums and Songs that have the specified value in them"  << endl;
 	cout << "PrintLib - Print the entire library to the screen"  << endl;
 	cout << "Help - Print help menu"  << endl;
-	cout << "LoadLib - Load Library from a file"  << endl;
+	cout << "LoadLib - Load Library from a file (removes any other Artists in File)"  << endl;
 	cout << "SaveLib - Save Library to a file"  << endl;
-	cout << "Quit - Exit"  << endl;
+	cout << "Quit - Exit"  << endl << endl;
+	cout << "Use underscore instead of space for all entries" << endl;
+}
+
+string getResponse(){
+	string response;
+	cin >> response;
+	normalize(&response);
+	return response;
 }
 
 string searchMenu(){
 	string searchVal;
 	cout << "Search Value: (use _ as space) ";
-	cin >> searchVal;
-
-	for(int i = 0; i < searchVal.length(); i++){
-		if (searchVal[i] == '_')
-			searchVal[i] = ' ';
-	}
-
+	searchVal = getResponse();
 	return searchVal;
+}
+
+
+void normalize(string *input){
+	for(int i = 0; i < (*input).length(); i++){
+		if ((*input)[i] == '_')
+			(*input)[i] = ' ';
+	}
 }
 
 Artist* addMenu(){
 	Artist *newArtist;
 	string artist, album;
-	cout << "Please enter an artist: " << endl;
-    cin >> artist;
+	cout << "Please enter an artist:" << endl;
+    artist = getResponse();
 	newArtist = new Artist(artist);
-    cout << "Please enter first album name" << endl;
-    cin >> album;
-    while (album.compare("N") != 0) {
-        cout << "How many songs on this album?" << endl;
-        int numSongs;
-        cin >> numSongs;
-        Song **songs;
-		songs = new Song*[numSongs]; //songs name
+    cout << "Please enter album name" << endl;
+    album = getResponse();
+    cout << "How many songs do you want to add?" << endl;
+    int numSongs;
+    cin >> numSongs;
+    Song **songs = new Song*[numSongs]; //songs name
 
-        for (int i = 0; i < numSongs; i++) {
-            cout << "enter song length: " << i << endl;
-            int length;
-            cin >> length;
-            cout << "enter song name: " << i << endl;
-            string name;
-            cin >> name;
-            songs[i] = new Song(name, length);
-        }
-        (*newArtist).add(new Album(album, numSongs, songs));
-
-        cout << "Please enter next album name or N if done" << endl;
-        cin >> album;
+    for (int i = 0; i < numSongs; i++) {
+        cout << "enter song length: " << i+1 << endl;
+        int length;
+        cin >> length;
+        cout << "enter song name: " << i+1 << endl;
+        string name = getResponse();
+        songs[i] = new Song(name, length);
     }
+
+    (*newArtist).add(new Album(album, numSongs, songs));
+
+	
+    //while (album.compare("N") != 0) {
+        //cout << "Please enter next album name or N if done" << endl;	//typing "N" breaks the library
+        //cin >> album;
+   // }
 
 	return newArtist;
 }

@@ -1,9 +1,45 @@
+/*
+* File: Library.cpp
+* Author: Tyson Manning, Nick Smith, Jess Zielinski, Chris Porto, Audra Agajanian
+* Member: FinalProject.sln
+* 
+* Due: 24 July 2014
+*/
+
 #include "stdafx.h"
 #include "Library.h"
 
 Library::Library(){
 	size = 20; // Default size of 20 Artists
 	artists = new Artist*[size]; // Create empty array of default size
+	numberOfArtists = 0;
+}
+
+bool Library::add(Artist *newArtist){
+	bool added = false, found = false;
+	int i=0; 
+	while (i < numberOfArtists && (!added || !found)) {
+		if ((*newArtist).getName() == (*artists[i]).getName()){
+			found = true;
+
+			//need to copy over all albums in newArtist
+			for (int j = 0; j < (*newArtist).getNumberAlbums(); j++){
+				added = (added || (*artists[i]).add((*newArtist).getAlbum(j)));
+			}
+
+			
+		}
+		i++;
+	}
+	if (!found){
+		// add newArtist to artists array
+		if (numberOfArtists < size || resize()){
+			artists[numberOfArtists] = newArtist;
+			numberOfArtists++;
+			added = true;
+		}
+	}
+	return added;
 }
 
 bool Library::search(string name){
@@ -32,47 +68,6 @@ bool Library::searchPart(string part){
 	return match;
 }
 
-bool Library::add(Artist *newArtist){
-	bool added = false, found = false;
-	int i=0; 
-	while (i < numberOfArtists && (!added || !found)) {
-		if ((*newArtist).getName() == (*artists[i]).getName()){
-			//need to copy over all albums in newArtist
-			found = true;
-			//for (int j = 0; j < (*newArtist).getn
-			//added = (*artists[i]).add((*newArtist).getAlbums());
-		}
-		i++;
-	}
-	if (!found){
-		// add newArtist to artists array
-		if (numberOfArtists < size || resize()){
-			artists[numberOfArtists]= newArtist;
-			numberOfArtists++;
-			added = true;
-		}
-	}
-	return added;
-}
-
-bool Library::resize(int newSize){
-	if(newSize > numberOfArtists){
-		Artist **newArtist = new Artist*[newSize];
-		for(int i=0; i<numberOfArtists; i++){
-			newArtist[i]=artists[i];
-		}
-		delete artists;
-		artists = newArtist;
-		size = newSize;
-		return true;
-	}
-	return false;
-}
-
-bool Library::resize(){
-	return resize(numberOfArtists+2);
-}
-
 void Library::print(){
 	cout << "Library:" << endl << endl;
 	for (int i = 0; i < numberOfArtists; i++){
@@ -80,15 +75,14 @@ void Library::print(){
 	}
 }
 
-void Library::loadLibrary(){
+bool Library::loadLibrary(){
 	ifstream inFile;
 
 	// Open the file
-	inFile.open("TempLibrary.txt");
+	inFile.open("Library.txt");
 
 	if(inFile.fail()){
-		cout << "Failed to open File";
-		return;
+		return false;
 	}
 
 	// Read in how many artists are in file
@@ -107,17 +101,18 @@ void Library::loadLibrary(){
 	}
 
 	inFile.close();
+
+	return true;
 }
 
-void Library::saveLibrary(){
+bool Library::saveLibrary(){
 	ofstream outFile;
 
 	// Open the file
-	outFile.open("TempLibrary.txt");
+	outFile.open("Library.txt");
 
 	if(outFile.fail()){
-		cout << "Failed to open File";
-		return;
+		return false;
 	}
 
 	// Output to a file just like is expected when loading the library
@@ -129,6 +124,7 @@ void Library::saveLibrary(){
 	}
 
 	outFile.close();
+	return true;
 }
 
 void Library::deleteLibrary(){
@@ -136,4 +132,22 @@ void Library::deleteLibrary(){
 		delete artists[i];
 	}
 	size = 0;
+}
+
+bool Library::resize(int newSize){
+	if(newSize > numberOfArtists){
+		Artist **newArtist = new Artist*[newSize];
+		for(int i=0; i<numberOfArtists; i++){
+			newArtist[i]=artists[i];
+		}
+		delete artists;
+		artists = newArtist;
+		size = newSize;
+		return true;
+	}
+	return false;
+}
+
+bool Library::resize(){
+	return resize(numberOfArtists+2);
 }

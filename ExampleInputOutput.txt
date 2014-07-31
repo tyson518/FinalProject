@@ -1,0 +1,249 @@
+Use underscore for space in all entries
+Enter Command: Add
+Please enter an artist:
+asdf
+Please enter album name
+asfd_Ablum
+How many songs do you want to add?
+3
+enter song length: 1
+1234
+enter song name: 1
+Stuff
+enter song length: 2
+09245
+enter song name: 2
+Junk
+enter song length: 3
+1234
+enter song name: 3
+Stuff_N_Junk
+Added Successfully
+Enter Command: PrintLib
+Library:
+
+Artist: asdf
+
+Album Name:     asfd Ablum      Album Length:   195:13
+        #       Time    Plays   Name
+        1       20:34   0       Stuff
+        2       154:05  0       Junk
+        3       20:34   0       Stuff N Junk
+
+
+
+
+Enter Command: Add
+Please enter an artist:
+asdf
+Please enter album name
+Album_and_Junk
+How many songs do you want to add?
+2
+enter song length: 1
+1234
+enter song name: 1
+asd
+enter song length: 2
+34
+enter song name: 2
+;lkj
+asfd Ablum
+Added Successfully
+Enter Command: PrintLib
+Library:
+
+Artist: asdf
+
+Album Name:     asfd Ablum      Album Length:   195:13
+        #       Time    Plays   Name
+        1       20:34   0       Stuff
+        2       154:05  0       Junk
+        3       20:34   0       Stuff N Junk
+
+Album Name:     Album and Junk  Album Length:   21:08
+        #       Time    Plays   Name
+        1       20:34   0       asd
+        2       0:34    0       ;lkj
+
+
+
+
+Enter Command: Add
+Please enter an artist:
+New_Artist
+Please enter album name
+;lkj
+How many songs do you want to add?
+1
+enter song length: 1
+23
+enter song name: 1
+lkjevndfkj
+Added Successfully
+Enter Command: PrintLib
+Library:
+
+Artist: asdf
+
+Album Name:     asfd Ablum      Album Length:   195:13
+        #       Time    Plays   Name
+        1       20:34   0       Stuff
+        2       154:05  0       Junk
+        3       20:34   0       Stuff N Junk
+
+Album Name:     Album and Junk  Album Length:   21:08
+        #       Time    Plays   Name
+        1       20:34   0       asd
+        2       0:34    0       ;lkj
+
+
+
+Artist: New Artist
+
+Album Name:     ;lkj    Album Length:   0:23
+        #       Time    Plays   Name
+        1       0:23    0       lkjevndfkj
+
+
+
+
+Enter Command: Help
+
+Menu Commands:
+
+Add - Adds album to the Library
+Search - Finds all Artists, Albums, and Songs that match the specified value
+SearchPart - Finds all Artists, Albums and Songs that have the specified value i
+n them
+PrintLib - Print the entire library to the screen
+Help - Print help menu
+LoadLib - Load Library from a file (removes any other Artists in File)
+SaveLib - Save Library to a file
+Quit - Exit
+
+Use underscore instead of space for all entries
+
+Enter Command: Search
+Search Value: (use _ as space) asdf
+
+Artist: asdf
+
+Album Name:     asfd Ablum      Album Length:   195:13
+        #       Time    Plays   Name
+        1       20:34   0       Stuff
+        2       154:05  0       Junk
+        3       20:34   0       Stuff N Junk
+
+Album Name:     Album and Junk  Album Length:   21:08
+        #       Time    Plays   Name
+        1       20:34   0       asd
+        2       0:34    0       ;lkj
+
+
+
+
+Enter Command: Search asd
+Search Value: (use _ as space)
+20:34   0       asd
+
+Enter Command: Search
+Search Value: (use _ as space) ;lkj
+
+0:34    0       ;lkj
+Album Name:     ;lkj    Album Length:   0:23
+        #       Time    Plays   Name
+        1       0:23    0       lkjevndfkj
+
+
+Enter Command: Quit
+
+Use underscore for space in all entries
+Enter Command: LoadLib
+Library loaded from the file.
+Enter Command: Search
+Search Value: (use _ as space) The_Beatles
+
+Artist: The Beatles
+
+Album Name:     Let It Be       Album Length:   35:10
+        #       Time    Plays   Name
+        1       3:46    0       Two of Us
+        2       3:54    0       Dig a Pony
+        3       3:47    0       Across the Universe
+        4       2:26    0       I Me Mine
+        5       0:50    0       Dig It
+        6       4:03    0       Let It Be
+        7       0:40    0       Maggie Mae
+        8       3:37    0       I've Got a Feeling
+        9       2:53    0       One After 909
+        10      3:34    0       The Long and Winding Road
+        11      2:33    0       For You Blue
+        12      3:07    0       Get Back
+
+Album Name:     Sgt. Pepper's Lonely Hearts Club Band   Album Length:   39:53
+        #       Time    Plays   Name
+        1       2:02    0       Sgt. Pepper's Lonely Hearts Club Band
+        2       2:44    0       With a Little Help From My Friends
+        3       3:24    0       Lucy in the Sky With Diamonds
+        4       2:50    0       Getting Better
+        5       2:39    0       Fixing a Hole
+        6       3:37    0       She's Leaving Home
+        7       2:35    0       Being For The Benefit Of Mr. Kite
+        8       5:07    0       Within You Without You
+        9       2:40    0       When I'm Sixty-Four
+        10      2:39    0       Lovely Rita
+        11      2:43    0       Good Morning Good Morning
+        12      1:19    0       Sgt. Pepper's Lonely Hearts Club Band (reprise)
+        13      5:34    0       A Day in the Life
+
+Album Name:     A Hard Day's Night      Album Length:   34:11
+        #       Time    Plays   Name
+        1       2:33    0       A Hard Day's Night
+        2       2:33    0       A Hard Day's Night
+        3       2:10    0       Tell Me Why
+        4       2:07    0       I'll Cry Instead
+        5       2:14    0       I Should Have Known Better (instrumental)
+        6       1:55    0       I'm Happy Just to Dance With You
+        7       1:59    0       I'm Happy Just to Dance With You
+        8       3:46    0       And I Love Her (instrumental)
+        9       2:45    0       I Should Have Known Better
+        10      2:09    0       If I Fell
+        11      2:31    0       And I Love Her
+        12      3:11    0       Ringo's Theme (This Boy) (instrumental)
+        13      2:11    0       Can't Buy Me Love
+        14      2:07    0       A Hard Day's Night (instrumental)
+
+Album Name:     Abbey Road      Album Length:   47:25
+        #       Time    Plays   Name
+        1       4:21    0       Come Together
+        2       3:03    0       Something
+        3       3:27    0       Maxwell's Silver Hammer
+        4       3:27    0       Oh! Darling
+        5       2:51    0       Octopus's Garden
+        6       7:47    0       I Want You (She's So Heavy)
+        7       3:06    0       Here Comes the Sun
+        8       2:46    0       Because
+        9       4:02    0       You Never Give Me Your Money
+        10      2:26    0       Sun King
+        11      1:06    0       Mean Mr. Mustard
+        12      1:13    0       Polythene Pam
+        13      1:58    0       She Came in Through the Bathroom Window
+        14      1:32    0       Golden Slumbers
+        15      1:37    0       Carry That Weight
+        16      2:20    0       The End
+        17      0:23    0       Her Majesty
+
+
+
+
+Enter Command: Search
+Search Value: (use _ as space) The_End
+
+2:20    0       The End
+
+Enter Command: Search
+Search Value: (use _ as space) Something_Not_In_Library
+
+Nothing Found
+Enter Command: Quit

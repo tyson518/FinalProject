@@ -1,3 +1,11 @@
+/*
+* File: Artist.cpp
+* Author: Tyson Manning, Nick Smith, Jess Zielinski, Chris Porto, Audra Agajanian
+* Member: FinalProject.sln
+* 
+* Due: 24 July 2014
+*/
+
 #include "stdafx.h"
 #include "Artist.h"
 
@@ -38,6 +46,42 @@ Artist::Artist(ifstream *inFile){
 	}
 }
 
+int Artist::getNumberAlbums(){
+	return numberOfAlbums;
+}
+
+string Artist::getName(){
+	return name;
+}
+
+Album* Artist::getAlbum(int index){
+	return albums[index];
+}
+
+bool Artist::add(Album *newAlbum){
+	bool added = false, found = false;
+	int i=0;
+	while(i < numberOfAlbums && (!found || !added)){
+		cout << (*albums[i]).getTitle() << endl;
+		if ((*newAlbum).getTitle() == (*albums[i]).getTitle()){
+			found = true;
+			//need to copy over all Songs in newAlbum. 
+			for (int j=0; j < (*newAlbum).getNumberOfSongs(); j++)
+			{
+				added = (added || (*albums[i]).add((*newAlbum).getSong(j)));
+			}
+
+		}
+		i++;
+	}
+	if (!found){
+		albums[numberOfAlbums] = newAlbum;
+		numberOfAlbums++;
+		added = true;
+	}
+	return added;
+}
+
 bool Artist::remove(int index){
 	if(index >= 0 && index < numberOfAlbums) {
 		for (int i = index; i<(numberOfAlbums-1); i++){
@@ -48,28 +92,6 @@ bool Artist::remove(int index){
 	} else {
 		return false;
 	}
-}
-
-bool Artist::resize(int newSize){
-	if(newSize > numberOfAlbums){
-		Album **newAlbums = new Album*[newSize];
-		for(int i=0; i<numberOfAlbums; i++){
-			newAlbums[i]=albums[i];
-		}
-		delete albums;
-		albums = newAlbums;
-		size = newSize;
-		return true;
-	}
-	return false;
-}
-
-bool Artist::resize(){
-	return resize(numberOfAlbums+2);
-}
-
-string Artist::getName(){
-	return name;
 }
 
 bool Artist::search(string name){
@@ -97,20 +119,6 @@ bool Artist::searchPart(string part, int *foundNumber){
 	return match;
 }
 
-bool Artist::add(Album *newAlbum){
-	bool retval = false, added = false;
-	for (int i=0; i < numberOfAlbums; i++){
-		if ((*newAlbum).getTitle() == (*albums[i]).getTitle()){
-			//need to copy over all Songs in newAlbum. 
-			
-		}
-	}
-	if (!added){
-		// add newAlbum to albums array
-	}
-	return false;
-}
-
 void Artist::print(){
 	cout << "Artist: " << name << endl << endl;
 	for (int i = 0; i < numberOfAlbums; i++){
@@ -133,4 +141,22 @@ void Artist::deleteArtist(){
 		delete albums[i];
 	}
 	size = 0;
+}
+
+bool Artist::resize(int newSize){
+	if(newSize > numberOfAlbums){
+		Album **newAlbums = new Album*[newSize];
+		for(int i=0; i<numberOfAlbums; i++){
+			newAlbums[i]=albums[i];
+		}
+		delete albums;
+		albums = newAlbums;
+		size = newSize;
+		return true;
+	}
+	return false;
+}
+
+bool Artist::resize(){
+	return resize(numberOfAlbums+2);
 }

@@ -1,3 +1,11 @@
+/*
+* File: Song.cpp
+* Author: Tyson Manning, Nick Smith, Jess Zielinski, Chris Porto, Audra Agajanian
+* Member: FinalProject.sln
+* 
+* Due: 24 July 2014
+*/
+
 #include "stdafx.h"
 #include <iostream>
 #include "Song.h"
@@ -46,9 +54,26 @@ string Song::getTitle(){
 }
 
 void Song::print(){
-	cout << length << '\t' << playCount << '\t' << title << endl;
+	printLength();
+	cout << '\t' << playCount << '\t' << title << endl;
 }
 
 int Song::getLength(){
 	return length;
+}
+
+void Song::incrementPlayCount(){
+	playCount++;
+}
+
+int Song::getPlayCount(){
+	return playCount;
+}
+
+void Song::printLength(){
+	cout << length/60 << ":";  //convert to minutes and seconds. Unnecessary, but looks nice
+	if(length%60 < 10)
+		cout << "0" << length%60;   //cout "0:04" instead of "0:4"
+	else
+		cout << length%60;
 }
